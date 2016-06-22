@@ -1,0 +1,105 @@
+/*
+ * Copyright 2015-2016 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package example;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+
+import java.util.Arrays;
+
+import org.junit.Before;
+import org.junit.ClassRule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.keyvalue.core.KeyValueTemplate;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.PartialUpdate;
+import org.springframework.data.redis.core.RedisOperations;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+/**
+ * @author Thomas Darimont
+ * @author Oliver Gierke
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(RedisTestConfiguration.class)
+public class RedisRepositoryTests {
+
+	public static @ClassRule EmbeddedRedisRule embeddedRedis = new EmbeddedRedisRule();
+
+	@Autowired RedisConnectionFactory redisConnectionFactory;
+	@Autowired RedisOperations<String, String> redis;
+	@Autowired KeyValueTemplate kvTemplate;
+	@Autowired PersonRepository repository;
+
+	@Before
+	public void setup() {
+		kvTemplate.delete(Person.class);
+	}
+
+	@Test
+	public void simpleFindByMultipleProperties() {
+
+		Person egwene = new Person();
+		egwene.firstname = "egwene";
+		egwene.lastname = "al'vere";
+		egwene.city = new City("new york");
+
+		Person marin = new Person();
+		marin.firstname = "marin";
+		marin.lastname = "al'vere";
+
+		repository.save(Arrays.asList(egwene, marin));
+
+		assertThat(repository.findByLastname("al'vere").size(), is(2));
+
+		assertThat(repository.findByFirstnameAndLastname("egwene", "al'vere").size(), is(1));
+		assertThat(repository.findByFirstnameAndLastname("egwene", "al'vere").get(0), is(egwene));
+	}
+
+	@Test
+	public void partialUpdate() {
+
+		Person egwene = new Person();
+		egwene.firstname = "egwene";
+		egwene.lastname = "al'vere";
+		egwene.city = new City("new york");
+
+		Person marin = new Person();
+		marin.firstname = "marin";
+		marin.lastname = "al'vere";
+
+		repository.save(Arrays.asList(egwene, marin));
+
+		PartialUpdate<Person> partialUpdate = PartialUpdate //
+				.newPartialUpdate(egwene.getId(), Person.class)//
+				.del("lastname")//
+				.set("city.name", "Tear");
+
+		try {
+			kvTemplate.update(partialUpdate);
+			fail("Missing NullPointerException. Seems someone fixed the issue which means the try/catch and this line can be removed.");
+		} catch (RuntimeException e) {
+		}
+
+		Person loaded = repository.findOne(egwene.getId());
+
+		assertThat(loaded.getLastname(), is(nullValue()));
+		assertThat(loaded.getCity().getName(), is(equalTo("Tear")));
+	}
+}

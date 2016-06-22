@@ -1,0 +1,15 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+cache:
+  directories:
+    - $HOME/.m2
+    - $HOME/.embedmongo
+
+sudo: false
+
+install: make -C 05-redis-cluster start
+
+script: "mvn clean dependency:list test -Dsort"
