@@ -59,9 +59,6 @@ public class UserRepositoryIntegrationTests {
 		this.hank = repository.save(new User("Hank", "Schrader", 43));
 	}
 
-	/**
-	 * @see #153
-	 */
 	@Test
 	public void countBySimpleExample() {
 
@@ -70,9 +67,6 @@ public class UserRepositoryIntegrationTests {
 		assertThat(repository.count(example), is(3L));
 	}
 
-	/**
-	 * @see #153
-	 */
 	@Test
 	public void ignorePropertiesAndMatchByAge() {
 
@@ -82,9 +76,6 @@ public class UserRepositoryIntegrationTests {
 		assertThat(repository.findOne(example), is(flynn));
 	}
 
-	/**
-	 * @see #153
-	 */
 	@Test
 	public void substringMatching() {
 
@@ -94,9 +85,6 @@ public class UserRepositoryIntegrationTests {
 		assertThat(repository.findAll(example), hasItems(skyler, walter));
 	}
 
-	/**
-	 * @see #153
-	 */
 	@Test
 	public void matchStartingStringsIgnoreCase() {
 
@@ -109,9 +97,6 @@ public class UserRepositoryIntegrationTests {
 		assertThat(repository.findAll(example), hasItems(flynn, walter));
 	}
 
-	/**
-	 * @see #153
-	 */
 	@Test
 	public void configuringMatchersUsingLambdas() {
 
@@ -124,9 +109,6 @@ public class UserRepositoryIntegrationTests {
 		assertThat(repository.findAll(example), hasItems(flynn, walter));
 	}
 
-	/**
-	 * @see #153
-	 */
 	@Test
 	public void valueTransformer() {
 
