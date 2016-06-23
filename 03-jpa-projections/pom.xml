@@ -8,8 +8,8 @@
 		<version>1.0.0.BUILD-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>spring-data-jpa-query-by-example</artifactId>
-	<name>What's new in Spring Data? - JPA Query-by-Example (QBE)</name>
+	<artifactId>spring-data-jpa-projections</artifactId>
+	<name>What's new in Spring Data? - JPA Projections</name>
 
 	<properties>
 		<spring-data-releasetrain.version>Hopper-SR2</spring-data-releasetrain.version>
