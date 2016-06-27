@@ -23,6 +23,7 @@
 		<module>05-jpa-query-method-wrapped-parameters</module>
 		<module>06-redis-cluster</module>
 		<module>07-redis-repositories</module>
+		<module>10-mongodb-reactive</module>
 	</modules>
 
 	<properties>
