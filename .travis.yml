@@ -10,6 +10,6 @@ cache:
 
 sudo: false
 
-install: make -C 05-redis-cluster start
+install: make -C 06-redis-cluster
 
 script: "mvn clean dependency:list test -Dsort"
