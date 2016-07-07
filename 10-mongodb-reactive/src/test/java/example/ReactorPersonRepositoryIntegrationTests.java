@@ -23,8 +23,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -37,8 +37,8 @@ import reactor.core.test.TestSubscriber;
  * @author Mark Paluch
  */
 @SuppressWarnings("unused")
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = ApplicationConfiguration.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ReactorPersonRepositoryIntegrationTests {
 
 	@Autowired ReactorPersonRepository repository;

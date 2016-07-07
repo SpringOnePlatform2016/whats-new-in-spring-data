@@ -25,19 +25,19 @@ import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.keyvalue.core.KeyValueTemplate;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.PartialUpdate;
 import org.springframework.data.redis.core.RedisOperations;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @author Thomas Darimont
  * @author Oliver Gierke
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(RedisTestConfiguration.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class RedisRepositoryTests {
 
 	public static @ClassRule EmbeddedRedisRule embeddedRedis = new EmbeddedRedisRule();
@@ -91,11 +91,7 @@ public class RedisRepositoryTests {
 				.del("lastname")//
 				.set("city.name", "Tear");
 
-		try {
-			kvTemplate.update(partialUpdate);
-			fail("Missing NullPointerException. Seems someone fixed the issue which means the try/catch and this line can be removed.");
-		} catch (RuntimeException e) {
-		}
+		kvTemplate.update(partialUpdate);
 
 		Person loaded = repository.findOne(egwene.getId());
 

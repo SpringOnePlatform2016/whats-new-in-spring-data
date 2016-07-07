@@ -22,7 +22,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.geo.GeoResult;
 import org.springframework.data.geo.GeoResults;
 import org.springframework.data.geo.Metrics;
@@ -31,7 +31,7 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.index.GeospatialIndex;
 import org.springframework.data.mongodb.core.query.NearQuery;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * Integration test showing the usage of MongoDB Composed Annotations support.
@@ -39,8 +39,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Mark Paluch
  */
 @SuppressWarnings("unused")
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(ApplicationConfiguration.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ComposedAnnotationIntegrationTest {
 
 	@Autowired MongoOperations operations;

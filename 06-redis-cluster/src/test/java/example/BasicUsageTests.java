@@ -22,17 +22,16 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 
 import org.junit.Before;
-import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * {@link BasicUsageTests} shows general usage of {@link RedisTemplate} and {@link RedisOperations} in a clustered
@@ -40,8 +39,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * 
  * @author Christoph Strobl
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = { AppConfig.class })
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = AppConfig.class)
 public class BasicUsageTests {
 
 	@Autowired RedisTemplate<String, String> template;

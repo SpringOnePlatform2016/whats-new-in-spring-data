@@ -25,26 +25,23 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.projection.TargetAware;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Integration tests for {@link CustomerRepository} to show projection capabilities.
  * 
  * @author Oliver Gierke
+ * @author Mark Paluch
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration
+@RunWith(SpringRunner.class)
 @Transactional
+@SpringBootTest
+@SpringBootApplication
 public class CustomerRepositoryIntegrationTest {
-
-	@Configuration
-	@EnableAutoConfiguration
-	static class Config {}
 
 	@Autowired CustomerRepository customers;
 

@@ -22,8 +22,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import rx.Observable;
 import rx.Single;
@@ -35,8 +35,8 @@ import rx.observers.TestSubscriber;
  * @author Mark Paluch
  */
 @SuppressWarnings("unused")
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = ApplicationConfiguration.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class RxJavaPersonRepositoryIntegrationTests {
 
 	@Autowired RxJavaPersonRepository repository;
