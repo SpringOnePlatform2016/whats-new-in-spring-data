@@ -89,9 +89,6 @@ public class PersonRepositoryIntegrationTests {
 	public void findByGenderWrappedInScalaOption() {
 
 		assertThat(repository.findByGender(Option.apply("male")), contains(gomez));
-
-		assertThat(repository.findByGender(Option.empty()), hasItems(thing, itt));
-		assertThat(repository.findByGender(Option.empty()), not(hasItems(gomez, mortica)));
 	}
 
 }
