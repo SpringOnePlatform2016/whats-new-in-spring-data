@@ -1,3 +1,26 @@
 = What's new in Spring Data?
 
 image:https://travis-ci.org/mp911de/whats-new-in-spring-data.svg?branch=master["Build Status", link="https://travis-ci.org/mp911de/whats-new-in-spring-data"]
+
+This repository contains code for the https://2016.event.springoneplatform.io/schedule/sessions/what_s_new_in_spring_data.html[What's New in Spring Data?] talk. It will give you a broad overview of the new features introduced in the latest Spring Data release trains.
+
+
+== Building the project
+
+=== Prerequisites
+
+- Maven 3
+- Java 8
+
+```
+$ git clone https://github.com/SpringOnePlatform2016/whats-new-in-spring-data.git
+$ cd whats-new-in-spring-data
+$ make -C redis-cluster start
+$ mvn clean install
+```
+
+## Getting Help
+
+The main project http://projects.spring.io/spring-data/[website] contains links to basic project information such as source code, JavaDocs, Issue tracking, etc.
+
+For more detailed questions, please refer to http://stackoverflow.com/questions/tagged/spring-data[spring-data on stackoverflow]. If you are new to Spring as well as to Spring Data, look for information about https://spring.io/projects[Spring projects].
