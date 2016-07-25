@@ -16,14 +16,14 @@
 	</parent>
 
 	<modules>
-		<module>01-jpa-query-by-example</module>
-		<module>02-mongodb-query-by-example</module>
-		<module>03-jpa-projections</module>
-		<module>04-mongodb-composed-annotations</module>
-		<module>05-jpa-query-method-wrapped-parameters</module>
-		<module>06-redis-cluster</module>
-		<module>07-redis-repositories</module>
-		<module>10-mongodb-reactive</module>
+		<module>jpa-query-by-example</module>
+		<module>mongodb-query-by-example</module>
+		<module>jpa-projections</module>
+		<module>mongodb-composed-annotations</module>
+		<module>jpa-query-method-wrapped-parameters</module>
+		<module>redis-cluster</module>
+		<module>redis-repositories</module>
+		<module>mongodb-reactive</module>
 	</modules>
 
 	<properties>
