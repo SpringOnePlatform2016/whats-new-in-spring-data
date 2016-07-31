@@ -29,7 +29,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.test.TestSubscriber;
+import reactor.test.TestSubscriber;
 
 /**
  * Integration tests showing the usage of Reactive MongoDB support through
