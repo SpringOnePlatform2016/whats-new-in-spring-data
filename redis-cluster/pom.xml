@@ -12,7 +12,7 @@
 	</parent>
 
 	<properties>
-		<spring-data-releasetrain.version>Hopper-SR2</spring-data-releasetrain.version>
+		<jedis.version>2.9.0</jedis.version>
 	</properties>
 
 	<dependencies>

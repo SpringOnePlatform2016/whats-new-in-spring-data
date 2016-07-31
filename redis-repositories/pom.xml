@@ -12,7 +12,7 @@
 	</parent>
 
 	<properties>
-		<spring-data-releasetrain.version>Ingalls-BUILD-SNAPSHOT</spring-data-releasetrain.version>
+		<jedis.version>2.9.0</jedis.version>
 	</properties>
 
 	<dependencies>
@@ -32,13 +32,13 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-keyvalue</artifactId>
-			<version>1.2.0.BUILD-SNAPSHOT</version>
+			<version>1.2.0.M1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-redis</artifactId>
-			<version>1.8.0.BUILD-SNAPSHOT</version>
+			<version>1.8.0.M1</version>
 		</dependency>
 
 	</dependencies>
